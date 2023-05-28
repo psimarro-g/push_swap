@@ -6,7 +6,7 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/05/27 18:25:11 by psimarro         ###   ########.fr        #
+#    Updated: 2023/05/28 11:33:12 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,8 +65,9 @@ libft:
 	@$(MAKE) -C Libft
 
 stack:
-	$(CC) -o create_stack create_stack.c
-	
+	$(CC) -o create_stack create_stack.c $(LDFLAGS)
+	./create_stack a.txt
+	$(RM) create_stack
 
 usage:
 	@echo "ARG=\$$(cat a.txt); ./push_swap \$$ARG | ./checker_Mac \$$ARG"
