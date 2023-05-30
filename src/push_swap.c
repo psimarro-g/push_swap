@@ -1,7 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/30 19:53:30 by psimarro          #+#    #+#             */
+/*   Updated: 2023/05/30 20:53:35 by psimarro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Libft/inc/libft.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
-    ft_printf("sa\nsa\nsa\n");
-    return 0;
+    if (argc > 1)
+    {
+        ft_printf("sa\nsa\nsa\n");
+    }
+    return (0);
 }
