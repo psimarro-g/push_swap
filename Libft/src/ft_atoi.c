@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:39:10 by psimarro          #+#    #+#             */
-/*   Updated: 2023/05/30 20:51:08 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/06/03 20:44:08 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static unsigned long long int	ft_checknb(unsigned long long int nb, int neg)
 {
-	long long int	nl;
+	unsigned long long int	nl;
 
 	nl = 9223372036854775807;
 	if (nb > nl && neg > 0)
@@ -28,7 +28,7 @@ int	ft_atoi(const char *str)
 {
 	int						i;
 	int						neg;
-	long long int			val;
+	unsigned long long int	val;
 
 	i = 0;
 	neg = 1;

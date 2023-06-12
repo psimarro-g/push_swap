@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 19:53:30 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/12 20:50:18 by psimarro         ###   ########.fr       */
+/*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
+/*   Updated: 2023/06/12 20:51:49 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/inc/libft.h"
-#include "../inc/push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-void	show_leaks(void)
+typedef struct s_pswap
 {
-	system("leaks -q push_swap");
-}
+	int     stack_size;
+}	t_pswap;
 
-int main(int argc, char **argv)
-{
-	t_pswap	t;
-	int     **stack;
-	int		i;
-    
-    atexit(show_leaks);
-	i = 0;
-    if (argc > 1)
-    {
-		stack = fill_stack(argv[1], &t);
-        while (stack[i])
-			ft_printf("%i\n", *stack[i++]);
-		ft_free_int_stack(stack);
-    }
-    return (0);
-}
+/* PTR_ATOI.C */
+int	    *ft_ptr_atoi(const char *str);
+
+/* PARSE:C */
+int	    **fill_stack (char *s, t_pswap *t);
+void	ft_mem_error(void);
+
+/* UTILS.C */
+void    ft_free_stack(char **stack);
+void    ft_free_int_stack(int **stack);
+
+#endif

@@ -6,29 +6,29 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 20:51:50 by psimarro          #+#    #+#             */
-/*   Updated: 2023/05/30 21:05:46 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/06/12 19:48:24 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/inc/libft.h"
 
-long int	ft_checknb(long int nb, int neg)
+static unsigned long long int	ft_checknb(unsigned long long int nb, int neg)
 {
-	long int	nl;
+	unsigned long long int	nl;
 
-	nl = 9223372036854775807;
+	nl = INT_MAX;
 	if (nb > nl && neg > 0)
-		return (-1); //esto creo que es para el overflow
+		return (0);
 	if (nb > nl + 1 && neg < 0)
 		return (0);
-	return (nb);
+	return (1);
 }
 
 int	*ft_ptr_atoi(const char *str)
 {
 	int						i;
 	int						neg;
-	long int			    val;
+	unsigned long long int	val;
     int                     *rtn;
 
 	i = 0;
@@ -45,9 +45,10 @@ int	*ft_ptr_atoi(const char *str)
         return (NULL);
 	while (str[i] >= '0' && str[i] <= '9')
 		val = (val * 10) + (str[i++] - '0');
-	val = ft_checknb(val, neg);
+	if (!ft_checknb(val, neg))
+		return (NULL);
     rtn = ft_calloc(1, sizeof(int));
-    *rtn = neg * (int)val; //aqui revisar numero positivo o negativo, si hace falta multiplicar o no
+    *rtn = neg * (int)val;
 	return (rtn);
 }
 

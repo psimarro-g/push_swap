@@ -6,7 +6,7 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/05/28 11:33:12 by psimarro         ###   ########.fr        #
+#    Updated: 2023/06/12 20:50:42 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ NAME	= push_swap
 
 CC 		= gcc
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g3 -glldb
 LDFLAGS = Libft/libft.a
 
 RM		= rm -f
@@ -38,7 +38,10 @@ RM		= rm -f
 # **************************************************************************** #
 
 SRC_DIR				=	src/
-SRC =	push_swap.c
+SRC =	push_swap.c \
+		utils.c		\
+		ptr_atoi.c	\
+		parse.c
 
 OBJ_DIR				=	obj/
 OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
@@ -69,8 +72,8 @@ stack:
 	./create_stack a.txt
 	$(RM) create_stack
 
-usage:
-	@echo "ARG=\$$(cat a.txt); ./push_swap \$$ARG | ./checker_Mac \$$ARG"
+pswap:
+	ARG=$$(cat a.txt); ./push_swap $$ARG | ./checker_Mac $$ARG
 
 clean:
 	@$(RM) -rf $(OBJ_DIR)
