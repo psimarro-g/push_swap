@@ -6,23 +6,24 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/12 20:51:49 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/06/14 19:18:39 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-typedef struct s_pswap
+typedef struct s_stack
 {
-	int     stack_size;
-}	t_pswap;
+	int     size;
+	int		**val;
+}	t_stack;
 
 /* PTR_ATOI.C */
 int	    *ft_ptr_atoi(const char *str);
 
 /* PARSE:C */
-int	    **fill_stack (char *s, t_pswap *t);
+void	fill_stack (char *s, t_stack *t);
 void	ft_mem_error(void);
 
 /* UTILS.C */

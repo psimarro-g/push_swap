@@ -6,7 +6,7 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/06/12 20:50:42 by psimarro         ###   ########.fr        #
+#    Updated: 2023/06/14 18:30:00 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ $(NAME): libft $(OBJ)
 libft:
 	@$(MAKE) -C Libft
 
-stack:
+stack: libft
 	$(CC) -o create_stack create_stack.c $(LDFLAGS)
 	./create_stack a.txt
 	$(RM) create_stack

@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:53:30 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/12 20:50:18 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/06/14 19:22:46 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@ void	show_leaks(void)
 
 int main(int argc, char **argv)
 {
-	t_pswap	t;
-	int     **stack;
+	t_stack	stack;
 	int		i;
     
     atexit(show_leaks);
 	i = 0;
     if (argc > 1)
     {
-		stack = fill_stack(argv[1], &t);
-        while (stack[i])
-			ft_printf("%i\n", *stack[i++]);
-		ft_free_int_stack(stack);
+		fill_stack(argv[1], &stack);
+        /*while (stack.val[i])
+			ft_printf("%i\n", *stack.val[i++]);*/
+		ft_free_int_stack(stack.val);
     }
     return (0);
 }

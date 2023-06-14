@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 20:51:50 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/12 19:48:24 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/06/14 19:22:32 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,12 @@ int	*ft_ptr_atoi(const char *str)
         return (NULL);
 	while (str[i] >= '0' && str[i] <= '9')
 		val = (val * 10) + (str[i++] - '0');
+	if (str[i] != '\t' && str[i] != '\n' && str[i] != '\v' && \
+			str[i] != '\f' && str[i] != '\r' && str[i] != ' ')
+        return (NULL);
 	if (!ft_checknb(val, neg))
 		return (NULL);
     rtn = ft_calloc(1, sizeof(int));
     *rtn = neg * (int)val;
 	return (rtn);
 }
-
-/*
-arreglar signos por el unsigned que habia
-checkear max y min int  y devolver null
-*/
