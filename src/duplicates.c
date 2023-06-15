@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   duplicates.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 19:53:30 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/14 19:52:18 by psimarro         ###   ########.fr       */
+/*   Created: 2023/06/14 19:50:26 by psimarro          #+#    #+#             */
+/*   Updated: 2023/06/14 20:12:50 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/inc/libft.h"
 #include "../inc/push_swap.h"
 
-void	show_leaks(void)
+void	check_duplicates(int **stack)
 {
-	system("leaks -q push_swap");
-}
-
-int main(int argc, char **argv)
-{
-	t_stack	stack;
-	int		i;
+    size_t  i;
     
-    atexit(show_leaks);
-	i = 0;
-    if (argc > 1)
+    while (stack[i])
     {
-		fill_stack(argv[1], &stack);
-        check_duplicates(stack.val);
-		ft_free_int_stack(stack.val);
+        i++;
     }
-    return (0);
 }
