@@ -6,18 +6,23 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/14 19:18:39 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/06/15 19:01:58 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-typedef struct s_stack
+typedef struct s_item
 {
-	int     size;
-	int		**val;
-}	t_stack;
+	int     		val;
+	int				index;
+	struct s_item	*next;
+	struct s_item	*prev;
+}	t_item;
+
+/* DUPLICATES.C */
+void	check_duplicates(int **stack);
 
 /* PTR_ATOI.C */
 int	    *ft_ptr_atoi(const char *str);
