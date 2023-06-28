@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:45:42 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/14 19:18:45 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/06/28 16:01:14 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,42 +19,48 @@ void	ft_mem_error(void)
 	exit(0);
 }
 
-static int	fill_stack_aux(char **p, t_stack *stack)
+static int	check_duplicates(t_item *stack)
 {
-	int		i;
-	
-	i = 0;
-	stack->size = 0;
-    while (p[stack->size])
-        stack->size++;
-	stack->size++;
-	stack->val = calloc(stack->size, sizeof(int*));
-	if (stack->val == NULL)
-		return (0);
-	while (p[i])
+	t_item	*stack_loop;
+
+	while (stack)
 	{
-		stack->val[i] = ft_ptr_atoi(p[i]);
-		if (stack->val[i++] == NULL)
+		stack_loop = stack->next;
+		while (stack_loop)
 		{
-			ft_free_int_stack(stack->val);
-            stack->val = NULL;
-        }
+			if (stack->val == stack_loop->val)
+				return (1);
+			stack_loop = stack_loop->next;
+		}
+		stack = stack->next;
 	}
-	return (1);
+	return (0);
 }
 
-void	fill_stack(char *s, t_stack *stack)
+int	fill_stack(t_pswap *data, char **input)
 {
+	int		i;
+	int		val;
+	t_item	*new;
 	char    **arr;
 
-	arr = ft_split(s, ' ');
-	if (arr == NULL)
-		ft_mem_error();
-	fill_stack_aux(arr, stack);
-	if (stack->val == NULL)
+	data->stack_a = NULL;
+	data->stack_b = NULL;
+	i = 0;
+	while (*input)
 	{
-		ft_free_stack(arr);
-		ft_mem_error();
+		while (i != -1)
+		{
+			i = ft_ptr_atoi(*input, &val, i);
+			if (i == 0)
+				return (0);
+			new = stack_lstnew(val);
+			stack_lstadd_back(&data->stack_a, new);
+		}
+		*input++;
 	}
-	ft_free_stack(arr);
+	if (check_duplicates(data->stack_a))
+		return (0);
+	get_values(data);
+	return (1);
 }

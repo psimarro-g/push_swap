@@ -6,7 +6,7 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/06/14 18:30:00 by psimarro         ###   ########.fr        #
+#    Updated: 2023/06/28 15:54:48 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,10 @@ RM		= rm -f
 
 SRC_DIR				=	src/
 SRC =	push_swap.c \
-		utils.c		\
 		ptr_atoi.c	\
-		parse.c
+		parse.c		\
+		list_func.c	\
+		list_func2.c
 
 OBJ_DIR				=	obj/
 OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
