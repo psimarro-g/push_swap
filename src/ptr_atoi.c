@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 20:51:50 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/28 15:47:53 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:12:42 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	ft_ptr_atoi(const char *str, int *value, int i)
 {
 	int						neg;
 	unsigned long long int	val;
-    char					*rtn;
 
 	neg = 1;
 	val = 0;

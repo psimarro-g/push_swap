@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:53:30 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/28 16:01:03 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:45:12 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,23 @@ void	show_leaks(void)
 int main(int argc, char **argv)
 {
 	t_pswap	data;
-    
+    t_item  *elem;
+
     atexit(show_leaks);
-    if (argc > 1)
+    if (argc > 1 && argv)
     {
 		if (fill_stack(&data, argv) == 0)
         {
             ps_lstclear(&data.stack_a);
-            exit (0);
+            ft_mem_error();
         }
+        elem = data.stack_a;
+        while (elem)
+	    {
+		    ft_printf("%i\n", elem->val);
+            elem = elem->next;
+	    }
+        ps_lstclear(&data.stack_a);
         //añadir aqui el printeo y el free de la lista para ver si lo ha guardado bien
     }
     return (0);

@@ -6,11 +6,12 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 12:01:48 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/28 14:31:34 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/06/29 17:54:33 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+#include "../Libft/inc/libft.h"
 
 t_item	*ps_lstnew(int elem)
 {
@@ -45,7 +46,7 @@ void	ps_lstadd_back(t_item **lst, t_item *new)
 		*lst = new;
 	else
 	{
-		last = ft_lstlast(*lst);
+		last = ps_lstlast(*lst);
 		last->next = new;
         new->pre = last;
 	}
