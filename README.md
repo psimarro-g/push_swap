@@ -1,16 +1,22 @@
-<h1 align="left">
+<h1 align="center">
 	PUSH-SWAP
 </h1>
-<p align="left">
+<h2 align="center">
 	<b><i>Algorithmic project</i></b><br>
-</p>
+</h2>
 
-<p align="left">
+<p align="center">
 	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/psimarro-g/push_swap?color=lightblue" />
 	<img alt="Code language count" src="https://img.shields.io/github/languages/count/psimarro-g/push_swap?color=yellow" />
 	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/psimarro-g/push_swap?color=blue" />
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/psimarro-g/push_swap?color=green" />
 </p>
+
+<p align="center">
+	Mac OS X 10.15.7 (Darwin Kernel Version 19.6.0)<br>
+</p>
+
+<br>
 
 This project comprises a stack sorting program and a checker program to verify the sorting was made correctly.
 ## The rules
