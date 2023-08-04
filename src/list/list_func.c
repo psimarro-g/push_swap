@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 12:01:48 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/04 16:22:07 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:21:13 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_item	*ps_lstnew(int elem)
 {
 	t_item	*new;
 
-	new = (t_item *)ft_calloc(sizeof(t_item *), 1);
+	new = (t_item *)ft_calloc(sizeof(t_item), 1);
 	if (!new)
 		return (0);
 	new->val = elem;

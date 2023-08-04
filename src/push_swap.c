@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 19:21:52 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/04 14:10:23 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:42:18 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ static void sort_five(t_pswap *data)
 	ind = data->stack_size - 3;
 	while (ind--)
 		r_or_rr(data, 1);
-	if (data->stack_b->ind == 0)
+	if (data->stack_b->ind == 0 && data->stack_b->next)
 		check_ss(data, data->stack_size - 3);
-	else
-		sort_three(data, data->stack_size - 3);
+	sort_three(data, data->stack_size - 3);
 	pa(data);
 	pa(data);
 }

@@ -6,7 +6,7 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/08/01 16:55:43 by psimarro         ###   ########.fr        #
+#    Updated: 2023/08/04 17:24:05 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ NAME	= push_swap
 
 CC 		= gcc
 
-CFLAGS	= -Wall -Wextra -Werror -g3 -glldb
+CFLAGS	= -Wall -Wextra -Werror -glldb
 LDFLAGS = Libft/libft.a
 
 RM		= rm -f

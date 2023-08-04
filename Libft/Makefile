@@ -6,14 +6,14 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 17:45:18 by psimarro          #+#    #+#              #
-#    Updated: 2023/04/05 19:12:15 by psimarro         ###   ########.fr        #
+#    Updated: 2023/08/04 17:22:49 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = gcc 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 
 RM = rm -f
 

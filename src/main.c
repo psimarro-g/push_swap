@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:53:30 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/04 16:12:42 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:22:30 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ int main(int argc, char **argv)
 		    ft_printf("%i\n", elem->val);
             elem = elem->next;
 	    }
-        // if (!ps_lst_is_sorted(data.stack_a))
-		// { 
-		// 	ps_lstindex(data.stack_a);
-        //     data.stack_size = ps_lstsize(data.stack_a);
-        //     data.print_ops = 1;
-		// 	sort(&data);
-		// 	ps_lstclear(&data.stack_b);
-		// }
+        if (!ps_lst_is_sorted(data.stack_a))
+        { 
+        	ps_lstindex(data.stack_a);
+            data.stack_size = ps_lstsize(data.stack_a);
+            data.print_ops = 1;
+        	sort(&data);
+        	ps_lstclear(&data.stack_b);
+        }
         ps_lstclear(&data.stack_a);
     }
     return (0);
