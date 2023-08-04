@@ -5,40 +5,66 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 19:53:30 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/29 18:45:12 by psimarro         ###   ########.fr       */
+/*   Created: 2023/06/29 19:21:52 by psimarro          #+#    #+#             */
+/*   Updated: 2023/08/04 14:10:23 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/inc/libft.h"
 #include "../inc/push_swap.h"
 
-void	show_leaks(void)
+static void	sort_three(t_pswap *data, int ind)
 {
-	system("leaks -q push_swap");
+	t_item	*stack;
+
+	stack = data->stack_a;
+	if (stack->ind == ind + 2 && stack->next->ind == ind)
+		ra(data);
+	else if (stack->ind == ind + 1 && stack->next->ind == ind + 2)
+		rra(data);
+	else if (stack->ind == ind && stack->next->ind == ind + 2)
+		sa_ra(data, 0);
+	else if (stack->ind == ind + 2 && stack->next->ind == ind + 1)
+		sa_ra(data, 1);
+	else if (stack->ind == ind + 1 && stack->next->ind == ind)
+		sa(data);
 }
 
-int main(int argc, char **argv)
+static void check_ss(t_pswap *data, int ind)
 {
-	t_pswap	data;
-    t_item  *elem;
+	t_item	*stack;
 
-    atexit(show_leaks);
-    if (argc > 1 && argv)
-    {
-		if (fill_stack(&data, argv) == 0)
-        {
-            ps_lstclear(&data.stack_a);
-            ft_mem_error();
-        }
-        elem = data.stack_a;
-        while (elem)
-	    {
-		    ft_printf("%i\n", elem->val);
-            elem = elem->next;
-	    }
-        ps_lstclear(&data.stack_a);
-        //añadir aqui el printeo y el free de la lista para ver si lo ha guardado bien
-    }
-    return (0);
+	stack = data->stack_a;
+	if (stack->ind == ind && stack->next->ind == ind + 2)
+		ss(data);
+	else if (stack->ind == ind + 2 && stack->next->ind == ind + 1)
+		ss(data);
+	else if (stack->ind == ind + 1 && stack->next->ind == ind)
+		ss(data);
+}
+
+static void sort_five(t_pswap *data)
+{
+	int		ind;
+	t_item	*stack;
+
+	stack = data->stack_a;
+	ind = data->stack_size - 3;
+	while (ind--)
+		r_or_rr(data, 1);
+	if (data->stack_b->ind == 0)
+		check_ss(data, data->stack_size - 3);
+	else
+		sort_three(data, data->stack_size - 3);
+	pa(data);
+	pa(data);
+}
+
+void	sort(t_pswap *data)
+{
+	if (data->stack_size < 3)
+		sa(data);
+	else if (data->stack_size < 4)
+		sort_three(data, 0);
+	else if (data->stack_size < 6)
+		sort_five(data);
 }

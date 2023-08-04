@@ -6,7 +6,7 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/06/28 15:54:48 by psimarro         ###   ########.fr        #
+#    Updated: 2023/08/01 16:55:43 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,14 +38,20 @@ RM		= rm -f
 # **************************************************************************** #
 
 SRC_DIR				=	src/
-SRC =	push_swap.c \
+SRC =	main.c		\
+		push_swap.c \
 		ptr_atoi.c	\
 		parse.c		\
 		list_func.c	\
-		list_func2.c
+		list_func2.c\
+		pab.c \
+		rab.c	\
+		rrab.c		\
+		sab.c
 
 OBJ_DIR				=	obj/
 OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
+VPATH 				= 	src/:src/list:src/parse:src/ops
 
 # **************************************************************************** #
 #                                    RULES                                     #
@@ -53,7 +59,7 @@ OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
 
 all: $(NAME)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 $(OBJ): | $(OBJ_DIR)

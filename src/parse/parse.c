@@ -6,12 +6,12 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:45:42 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/29 18:46:51 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:25:55 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/inc/libft.h"
-#include "../inc/push_swap.h"
+#include "../../Libft/inc/libft.h"
+#include "../../inc/push_swap.h"
 
 void	ft_mem_error(void)
 {

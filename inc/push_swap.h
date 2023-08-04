@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/29 17:50:25 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:15:27 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,42 +16,65 @@
 
 typedef struct s_item
 {
-	int     		val;
-	int				ind;
-	struct s_item	*next;
-	struct s_item	*pre;
+	struct s_item	 *next;
+	struct s_item	 *pre;
+	int     		 val;
+	int				 ind;
 }	t_item;
+
+typedef struct s_vec
+{
+	int     		x;
+	int				y;
+}	t_vec;
+
 
 typedef struct s_pswap
 {
 	t_item		*stack_a;
 	t_item		*stack_b;	
 	int			stack_size;
+	int			print_ops;
 	int			max;
 	int			min;
 }	t_pswap;
 
-/* LIST_FUNC.C */
+/* LIST/LIST_FUNC.C */
 t_item	*ps_lstnew(int elem);
 t_item	*ps_lstlast(t_item *lst);
 void	ps_lstadd_back(t_item **lst, t_item *new);
 void	ps_lstadd_front(t_item **lst, t_item *new);
 
-/* LIST_FUNC2.C */
-int	ps_lst_is_sorted(t_item *first);
-int	ps_lstsize(t_item *lst);
+/* LIST/LIST_FUNC2.C */
+int		ps_lst_is_sorted(t_item *first);
+int		ps_lstsize(t_item *lst);
 void	ps_lstindex(t_item *stack);
 void	ps_lstclear(t_item **lst);
 
-/* PTR_ATOI.C */
+/* PARSE/PTR_ATOI.C */
 int	    ft_ptr_atoi(const char *str, int *value, int i);
 
-/* PARSE:C */
+/* PARSE/PARSE:C */
 void	ft_mem_error(void);
 int		fill_stack(t_pswap *data, char **input);
 
-/* UTILS.C */
-void    ft_free_stack(char **stack);
-void    ft_free_int_stack(int **stack);
+/* OPS/SAB.C */
+void	sa(t_pswap *data);
+void	ss(t_pswap *data);
+void	sa_ra(t_pswap *data, int reverse);
+
+/* OPS/RAB.C */
+void	ra(t_pswap *data);
+void	r_or_rr(t_pswap *data, int chunk);
+
+/* OPS/RRAB.C */
+void	rra(t_pswap *data);
+
+/* OPS/PAB.C */
+void	pa(t_pswap *data);
+void	pb(t_pswap *data);
+
+/* PUSH_SWAP.C */
+void	sort(t_pswap *data);
 
 #endif

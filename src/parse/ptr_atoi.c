@@ -6,15 +6,48 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 20:51:50 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/29 18:12:42 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:10:14 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/inc/libft.h"
+#include "../../Libft/inc/libft.h"
 
-static unsigned long long int	ft_checknb(unsigned long long int nb, int neg)
+static int is_space(char c)
 {
-	unsigned long long int	nl;
+	if (c == '\t' || c == '\n' || c == '\v' || \
+			c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	return (0);
+}
+
+static int is_sign(const char *str, int *i)
+{
+	int	neg;
+
+	neg = 1;
+	if (str[*i] == '-')
+		neg *= -1;
+	if (str[*i] == '-' || str[*i] == '+')
+		*i += 1;
+	return (neg);
+}
+
+static int trim_end(const char *str, int i)
+{
+	if (!str[i])
+		return (-1);
+	if (!is_space(str[i]))
+		return (0);
+	while (is_space(str[i]))
+		i++;
+	if (!str[i])
+		return (-1);
+	return (i);
+}
+
+static int	ft_checknb(long int nb, int neg)
+{
+	long int	nl;
 
 	nl = INT_MAX;
 	if (nb > nl && neg > 0)
@@ -26,18 +59,15 @@ static unsigned long long int	ft_checknb(unsigned long long int nb, int neg)
 
 int	ft_ptr_atoi(const char *str, int *value, int i)
 {
-	int						neg;
-	unsigned long long int	val;
+	int	neg;
+	long	val;
 
-	neg = 1;
 	val = 0;
-	while ((str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || \
-			str[i] == '\f' || str[i] == '\r' || str[i] == ' '))
+	while (is_space(str[i]))
 		i++;
-	if (str[i] == '-')
-		neg *= -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
+	if (!str[i])
+		return (-1);
+	neg = is_sign(str, &i);
     if (!(str[i] >= '0' && str[i] <= '9'))
         return (0);
 	while (str[i] >= '0' && str[i] <= '9')
@@ -45,10 +75,6 @@ int	ft_ptr_atoi(const char *str, int *value, int i)
 	if (!ft_checknb(val, neg))
 		return (0);
     *value = neg * (int)val;
-	if (!str[i])
-		return (-1);
-	if (str[i] != '\t' && str[i] != '\n' && str[i] != '\v' && \
-		str[i] != '\f' && str[i] != '\r' && str[i] != ' ')
-		return (0);
+	i = trim_end(str, i);
 	return (i);
 }

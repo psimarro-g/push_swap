@@ -6,12 +6,12 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:14:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/06/29 18:22:27 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/07/31 16:28:12 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
-#include "../Libft/inc/libft.h"
+#include "../../inc/push_swap.h"
+#include "../../Libft/inc/libft.h"
 
 int	ps_lst_is_sorted(t_item *first)
 {
