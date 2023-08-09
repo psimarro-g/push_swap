@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 19:21:52 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/04 17:42:18 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/09 12:24:24 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,6 @@ void	sort(t_pswap *data)
 		sort_three(data, 0);
 	else if (data->stack_size < 6)
 		sort_five(data);
+	else
+		ft_quick_sort(data);
 }

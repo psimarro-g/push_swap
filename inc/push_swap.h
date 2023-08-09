@@ -6,13 +6,17 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/04 16:48:43 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:24:49 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
 # include <unistd.h>
+
+# define MIN_CHUNK_SIZE  25
+# define MAX_CHUNK_SIZE  62
 
 typedef struct s_item
 {
@@ -76,5 +80,13 @@ void	pb(t_pswap *data);
 
 /* PUSH_SWAP.C */
 void	sort(t_pswap *data);
+
+/* SORT.C */
+void	ft_quick_sort(t_pswap *data);
+
+/* SORT_UTILS.C */
+int		ft_get_min(t_item *stack);
+int 	ft_get_max(t_item *stack);
+int 	are_values(t_item *stack, int val);
 
 #endif
