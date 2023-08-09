@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:24:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/09 14:53:21 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:56:22 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@ static void	search_chunk(t_pswap *data, int chunk)
 	stack = ps_lstlast(stack);
 	while (bot++ < mid && stack->ind > chunk)
 		stack = stack->pre;
-	if (top <= bot)
-		while (--top)
-			ra(data);
-	else
-		while (bot--)
-			rra(data);
-	pb(data);
 }
 
 
