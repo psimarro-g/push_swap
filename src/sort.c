@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:24:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/09 14:56:22 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/15 12:53:35 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,27 @@ static void	search_chunk(t_pswap *data, int chunk)
 		stack = stack->pre;
 }
 
-
 static void	ft_sort_chunck(t_pswap *data, int chunk_size, int chunk)
 {
-	int		chunk_number;
-
-	chunk_number = data->stack_size / chunk_size;
-	while (are_values(data->stack_a, chunk_size))
+	while (are_values(data->stack_a, chunk_size * chunk))
 	{
-		if (data->stack_a->ind < chunk_size)
+		if (data->stack_a->ind < (chunk_size * chunk))
 			pb(data);
 		else
-			ra(data);
+			ra_or_rr(data);
 	}
 }
 
-void    ft_quick_sort(t_pswap *data)
+void	ft_quick_sort(t_pswap *data)
 {
-    int chunk_size;
-	int chunks;
-	int i;
+	int	chunk_size;
+	int	chunks;
+	int	i;
 
 	i = 1;
-    chunk_size = MIN_CHUNK_SIZE;
-    if (data->stack_size > 250)
-        chunk_size = MAX_CHUNK_SIZE;
+	chunk_size = MIN_CHUNK_SIZE;
+	if (data->stack_size > 250)
+		chunk_size = MAX_CHUNK_SIZE;
 	chunks = data->stack_size / chunk_size;
 	if (data->stack_size % chunk_size)
 		chunks++;

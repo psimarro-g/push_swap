@@ -6,7 +6,7 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/08/04 17:24:05 by psimarro         ###   ########.fr        #
+#    Updated: 2023/08/15 12:00:13 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@
 #                                   PROGRAM                                    #
 # **************************************************************************** #
 
-INC_DIR	= includes/
-HEADER	= includes/fdf.h
+INC_DIR	= inc/
+HEADER	= inc/push_swap.h
 NAME	= push_swap
 
 # **************************************************************************** #
@@ -95,4 +95,4 @@ re:			fclean all
 
 bonus:		re
 
-.PHONY:		all libft usage clean fclean re bonus
+.PHONY:		all libft stack pswap clean fclean re bonus

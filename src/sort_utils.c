@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:57:10 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/09 14:02:51 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/15 12:52:39 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,33 @@
 
 int	ft_get_min(t_item *stack)
 {
-    int	min;
+	int	min;
 
-    min = stack->val;
-    while (stack)
-    {
-        if (stack->val < min)
-            min = stack->val;
-        stack = stack->next;
-    }
-    return (min);
+	min = stack->val;
+	while (stack)
+	{
+		if (stack->val < min)
+			min = stack->val;
+		stack = stack->next;
+	}
+	return (min);
 }
 
-int ft_get_max(t_item *stack)
+int	ft_get_max(t_item *stack)
 {
-    int	max;
+	int	max;
 
-    max = stack->val;
-    while (stack)
-    {
-        if (stack->val > max)
-            max = stack->val;
-        stack = stack->next;
-    }
-    return (max);
+	max = stack->val;
+	while (stack)
+	{
+		if (stack->val > max)
+			max = stack->val;
+		stack = stack->next;
+	}
+	return (max);
 }
 
-int are_values(t_item *stack, int val)
+int	are_values(t_item *stack, int val)
 {
 	while (stack)
 	{

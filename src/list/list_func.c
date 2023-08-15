@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 12:01:48 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/04 17:21:13 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/15 12:44:15 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_item	*ps_lstlast(t_item *lst)
 
 void	ps_lstadd_back(t_item **lst, t_item *new)
 {
-	t_item  *last;
+	t_item	*last;
 
 	if (!lst || !new)
 		return ;
@@ -48,7 +48,7 @@ void	ps_lstadd_back(t_item **lst, t_item *new)
 	{
 		last = ps_lstlast(*lst);
 		last->next = new;
-        new->pre = last;
+		new->pre = last;
 	}
 }
 

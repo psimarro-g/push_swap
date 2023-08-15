@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:14:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/07/31 16:28:12 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/15 12:50:08 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 int	ps_lst_is_sorted(t_item *first)
 {
-    t_item  *elem;
-    
+	t_item	*elem;
+
 	if (!first)
 		return (1);
-    elem = first;
+	elem = first;
 	while (elem->next)
 	{
 		if (elem->val >= elem->next->val)
 			return (0);
-        elem = elem->next;
+		elem = elem->next;
 	}
-    return (1);
+	return (1);
 }
 
 int	ps_lstsize(t_item *lst)
@@ -46,7 +46,7 @@ int	ps_lstsize(t_item *lst)
 
 void	ps_lstindex(t_item *stack)
 {
-    int		index;
+	int		index;
 	t_item	*top;
 	t_item	*temp;
 
@@ -70,16 +70,16 @@ void	ps_lstindex(t_item *stack)
 void	ps_lstclear(t_item **lst)
 {
 	t_item		*item;
-    t_item		*temp;
+	t_item		*temp;
 
 	if (!lst)
 		return ;
-    item = *lst;
+	item = *lst;
 	while (item)
 	{
 		temp = item->next;
 		free(item);
-        item = temp;
+		item = temp;
 	}
-    *lst = NULL;
+	*lst = NULL;
 }
