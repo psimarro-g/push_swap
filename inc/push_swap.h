@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/15 12:41:54 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/15 13:52:25 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_pswap
 	t_item		*stack_b;	
 	int			stack_size;
 	int			print_ops;
-	int			max;
-	int			min;
+	int			hold_rb;
+	int			hold_sb;
 }	t_pswap;
 
 /* LIST/LIST_FUNC.C */
@@ -86,6 +86,7 @@ void	ft_quick_sort(t_pswap *data);
 /* SORT_UTILS.C */
 int		ft_get_min(t_item *stack);
 int		ft_get_max(t_item *stack);
-int		are_values(t_item *stack, int val);
+int		find_values(t_pswap *data, int chunk);
+int		are_values(t_item *stack, int chunk);
 
 #endif
