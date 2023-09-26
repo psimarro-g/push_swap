@@ -6,7 +6,7 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/09/26 20:23:16 by psimarro         ###   ########.fr        #
+#    Updated: 2023/09/26 20:41:16 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ NAME		=	push_swap
 
 CC 			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror -glldb
-LDFLAGS		=	Libft/libft.a
+CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
+LDFLAGS		=	Libft/libft.a -fsanitize=address
 
 RM			=	rm -f
 
@@ -42,7 +42,7 @@ SRC			=	main.c \
 				push_swap.c sort.c sort_utils.c \
 				parse.c	ptr_atoi.c \
 				list_func.c	list_func2.c \
-				pab.c rab.c rrab.c sab.c ssab.c
+				pab.c rab.c rrab.c sab.c
 
 OBJ_DIR		=	obj/
 OBJ			= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))

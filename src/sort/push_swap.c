@@ -6,11 +6,11 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 19:21:52 by psimarro          #+#    #+#             */
-/*   Updated: 2023/09/26 20:15:14 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:30:42 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 static void	sort_three(t_pswap *data, int ind)
 {

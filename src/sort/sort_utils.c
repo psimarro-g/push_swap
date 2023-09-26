@@ -6,11 +6,11 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:57:10 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/15 14:09:18 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:30:47 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 int	ft_get_min(t_item *stack)
 {
