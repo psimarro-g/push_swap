@@ -21,6 +21,7 @@
 # define BUFFER_SIZE 100
 # define FSPECS		"%cdisxXpu"
 # define STD_OUT	1
+# define OPEN_MAX	256
 # define EX_BASE "0123456789abcdefghijklmnopqrstuvwxyz"
 # define EX_BASE_UP "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
