@@ -6,7 +6,7 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/08/04 17:24:05 by psimarro         ###   ########.fr        #
+#    Updated: 2023/09/26 20:41:16 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,20 @@
 #                                   PROGRAM                                    #
 # **************************************************************************** #
 
-INC_DIR	= includes/
-HEADER	= includes/fdf.h
-NAME	= push_swap
+INC_DIR		=	inc/
+HEADER		=	inc/push_swap.h
+NAME		=	push_swap
 
 # **************************************************************************** #
 #                                   COMPILER                                   #
 # **************************************************************************** #
 
-CC 		= gcc
+CC 			=	gcc
 
-CFLAGS	= -Wall -Wextra -Werror -glldb
-LDFLAGS = Libft/libft.a
+CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
+LDFLAGS		=	Libft/libft.a -fsanitize=address
 
-RM		= rm -f
+RM			=	rm -f
 
 # **************************************************************************** #
 #                                    PATHS                                     #
@@ -37,27 +37,22 @@ RM		= rm -f
 #                                   SOURCES                                    #
 # **************************************************************************** #
 
-SRC_DIR				=	src/
-SRC =	main.c		\
-		push_swap.c \
-		ptr_atoi.c	\
-		parse.c		\
-		list_func.c	\
-		list_func2.c\
-		pab.c \
-		rab.c	\
-		rrab.c		\
-		sab.c
+SRC_DIR		=	src/
+SRC			=	main.c \
+				push_swap.c sort.c sort_utils.c \
+				parse.c	ptr_atoi.c \
+				list_func.c	list_func2.c \
+				pab.c rab.c rrab.c sab.c
 
-OBJ_DIR				=	obj/
-OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
-VPATH 				= 	src/:src/list:src/parse:src/ops
+OBJ_DIR		=	obj/
+OBJ			= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
+VPATH 		= 	src/:src/list:src/parse:src/ops:src/sort
 
 # **************************************************************************** #
 #                                    RULES                                     #
 # **************************************************************************** #
 
-all: $(NAME)
+all: libft $(NAME)
 
 $(OBJ_DIR)%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ 
@@ -67,7 +62,7 @@ $(OBJ): | $(OBJ_DIR)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(NAME): libft $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(LDFLAGS) $(OBJ)
 	@echo "\n\033[32mCompiled! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ\n"
 
@@ -80,7 +75,8 @@ stack: libft
 	$(RM) create_stack
 
 pswap:
-	ARG=$$(cat a.txt); ./push_swap $$ARG | ./checker_Mac $$ARG
+	ARG=$$(cat a.txt); ./push_swap $$ARG 
+# | ./checker_Mac $$ARG
 
 clean:
 	@$(RM) -rf $(OBJ_DIR)
@@ -95,4 +91,4 @@ re:			fclean all
 
 bonus:		re
 
-.PHONY:		all libft usage clean fclean re bonus
+.PHONY:		all libft stack pswap clean fclean re bonus

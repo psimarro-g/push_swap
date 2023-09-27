@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/09 14:24:49 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/15 13:52:25 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@
 
 typedef struct s_item
 {
-	struct s_item	 *next;
-	struct s_item	 *pre;
-	int     		 val;
-	int				 ind;
+	struct s_item	*next;
+	struct s_item	*pre;
+	int				val;
+	int				ind;
 }	t_item;
 
 typedef struct s_vec
 {
-	int     		x;
-	int				y;
+	int	x;
+	int	y;
 }	t_vec;
-
 
 typedef struct s_pswap
 {
@@ -39,8 +38,8 @@ typedef struct s_pswap
 	t_item		*stack_b;	
 	int			stack_size;
 	int			print_ops;
-	int			max;
-	int			min;
+	int			hold_rb;
+	int			hold_sb;
 }	t_pswap;
 
 /* LIST/LIST_FUNC.C */
@@ -56,7 +55,7 @@ void	ps_lstindex(t_item *stack);
 void	ps_lstclear(t_item **lst);
 
 /* PARSE/PTR_ATOI.C */
-int	    ft_ptr_atoi(const char *str, int *value, int i);
+int		ft_ptr_atoi(const char *str, int *value, int i);
 
 /* PARSE/PARSE:C */
 void	ft_mem_error(void);
@@ -86,7 +85,8 @@ void	ft_quick_sort(t_pswap *data);
 
 /* SORT_UTILS.C */
 int		ft_get_min(t_item *stack);
-int 	ft_get_max(t_item *stack);
-int 	are_values(t_item *stack, int val);
+int		ft_get_max(t_item *stack);
+int		find_values(t_pswap *data, int chunk);
+int		are_values(t_item *stack, int chunk);
 
 #endif

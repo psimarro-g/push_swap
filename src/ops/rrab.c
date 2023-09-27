@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:30:51 by psimarro          #+#    #+#             */
-/*   Updated: 2023/07/11 17:34:55 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/08/15 12:44:55 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	rr(t_item *stack)
 
 	if (!stack)
 		return ;
-    stack = ps_lstlast(stack);
+	stack = ps_lstlast(stack);
 	num = stack->val;
 	index = stack->ind;
 	while (stack)

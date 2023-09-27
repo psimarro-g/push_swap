@@ -6,11 +6,11 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 19:21:52 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/09 12:24:24 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:30:42 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 static void	sort_three(t_pswap *data, int ind)
 {
@@ -29,7 +29,7 @@ static void	sort_three(t_pswap *data, int ind)
 		sa(data);
 }
 
-static void check_ss(t_pswap *data, int ind)
+static void	check_ss(t_pswap *data, int ind)
 {
 	t_item	*stack;
 
@@ -42,7 +42,7 @@ static void check_ss(t_pswap *data, int ind)
 		ss(data);
 }
 
-static void sort_five(t_pswap *data)
+static void	sort_five(t_pswap *data)
 {
 	int		ind;
 	t_item	*stack;
