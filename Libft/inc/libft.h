@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/05/30 20:51:24 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/01 20:33:38 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@
 # define BUFFER_SIZE 100
 # define FSPECS		"%cdisxXpu"
 # define STD_OUT	1
-# define OPEN_MAX	256
 # define EX_BASE "0123456789abcdefghijklmnopqrstuvwxyz"
 # define EX_BASE_UP "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#ifndef OPEN_MAX
+# define OPEN_MAX	256
+#endif
 
 typedef struct s_list
 {
