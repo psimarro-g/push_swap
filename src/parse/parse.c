@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:45:42 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/01 13:49:54 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:41:36 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int	fill_stack(t_pswap *data, char **input)
 	int		val;
 	t_item	*new;
 
-	data->stack_a = NULL;
-	data->stack_b = NULL;
 	j = 0;
 	while (input[++j])
 	{

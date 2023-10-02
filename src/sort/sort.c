@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:24:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/01 22:46:53 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:03:46 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,25 +77,43 @@ static void	ft_sort_chunck(t_pswap *data, int chunk_size, int chunk)
 /*
 mientras el index no llegue a 0, comprobar si el elemento i esta arriba o abajo del stack b para hacer rb o rrb.
 comprobar si en algun momento el elemento i - 1 esta arriba del stack b y hacer pa para cachearlo.
-actualizar hold_ra mientras se encuentra el elemento i para hacer rr, si no hacer ra antes de pa.
-una vez encontrado el elemento i, hacer pa y si el elemento i - 1 esta abajo del stack actualizar hold_rra por si es necesario hacer rrr.
+actualizar hold_sa mientras se encuentra el elemento i.
+una vez encontrado el elemento i, hacer pa y si hold_sa = 1 hacer sa.
 */
+
+static void	find_push(t_pswap *data, int i)
+{
+	
+}
 
 static void	sort_a(t_pswap *data, int chunk_size)
 {
 	int	i;
 
 	i = data->stack_size;
-	while (i < chunk_size)
+	while (data->stack_b->next)
 	{
-		if (data->stack_a->ind <= chunk_size)
-			pb(data);
-		else
-			ra(data);
-		i++;
+		if (data->stack_a->ind == i)
+		{
+			if (data->hold_rra)
+				rra(data);
+			pa(data);
+			i--;
+			continue ;
+		}
+		else if (data->stack_a->ind == i - 1)
+		{
+			if (data->hold_rra)
+				rra(data);
+			pa(data);
+			data->hold_ra = 1;
+			continue ;
+		}
+		find_push(data, i);
+		if (data->hold_ra)
+			rra(data);
 	}
-	while (data->stack_b)
-		pa(data);
+	pa(data);
 }
 
 void	ft_quick_sort(t_pswap *data)
