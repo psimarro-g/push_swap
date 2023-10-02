@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 16:54:31 by psimarro          #+#    #+#             */
-/*   Updated: 2022/06/08 16:54:37 by psimarro         ###   ########.fr       */
+/*   Created: 2022/06/08 16:58:33 by psimarro          #+#    #+#             */
+/*   Updated: 2023/09/12 18:18:08 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_strdup(const char *s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*aux;
 	int		i;
+	char	*cpstr;
 
-	i = -1;
-	aux = ft_calloc(ft_strlen(s) + 1, sizeof(char));
-	if (!aux)
+	if (!s)
 		return (0);
-	while (s[++i])
-		aux[i] = s[i];
-	return (aux);
+	if (!len || start > ft_strlen(s))
+		return (NULL);
+	cpstr = ft_calloc(sizeof(char), len + 1);
+	if (!cpstr)
+		return (0);
+	i = 0;
+	while ((char)s[start] && len--)
+		cpstr[i++] = (char)s[start++];
+	return (cpstr);
 }

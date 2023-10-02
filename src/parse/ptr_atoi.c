@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ptr_atoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 20:51:50 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/15 12:51:23 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/01 13:50:00 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Libft/inc/libft.h"
+#include "../../libft/inc/libft.h"
 
 static int	is_space(char c)
 {

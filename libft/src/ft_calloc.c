@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 16:42:22 by psimarro          #+#    #+#             */
-/*   Updated: 2022/06/08 16:42:29 by psimarro         ###   ########.fr       */
+/*   Created: 2022/06/08 16:39:57 by psimarro          #+#    #+#             */
+/*   Updated: 2023/08/16 14:42:39 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_itoa_base(long long unsigned int n, int base, char *elm_base)
+void	*ft_calloc(size_t count, size_t size)
 {
-	long long int	nn;
-	char			*ret;
-	int				i;
+	void	*aux;
 
-	i = ft_ndigit(n, base);
-	if (n < 0)
-	{
-		nn = -n;
-		i++;
-	}
-	else
-		nn = n;
-	if (nn == 0)
-		nn = -1;
-	ret = ft_calloc(sizeof(char), i + 1);
-	*(ret + i) = '\0';
-	while (nn > 0)
-	{
-		ret[--i] = elm_base[nn % base];
-		nn = nn / base;
-	}
-	if (nn == -1)
-		*ret = '0';
-	return (ret);
+	if (size > INT_MAX / count || !count || !size)
+		return (0);
+	aux = malloc(count * size);
+	if (!aux)
+		return (0);
+	ft_bzero(aux, count * size);
+	return (aux);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include <libft.h>
 
 char	*fr_free(char *buffer, char *buf)
 {

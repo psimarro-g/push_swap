@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   rab.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:48:26 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/04 17:38:44 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/01 13:49:42 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-#include "../../Libft/inc/libft.h"
+#include "../../libft/inc/libft.h"
 
 static void	r(t_item *stack)
 {

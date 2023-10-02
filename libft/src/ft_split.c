@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:53:03 by psimarro          #+#    #+#             */
-/*   Updated: 2023/04/03 19:51:06 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:49:02 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static size_t	count_word(char const *s, char c)
 
 	i = 1;
 	rtn = 0;
-	if (s[0] == '\0')
+	if (!s || s[0] == '\0')
 		return (0);
 	if (s[0] != c)
 		rtn++;

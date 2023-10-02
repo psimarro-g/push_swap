@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dmontoro <dmontoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 16:58:33 by psimarro          #+#    #+#             */
-/*   Updated: 2022/06/08 16:58:37 by psimarro         ###   ########.fr       */
+/*   Created: 2022/06/08 16:54:31 by psimarro          #+#    #+#             */
+/*   Updated: 2023/09/18 12:01:34 by dmontoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strdup(const char *s)
 {
+	char	*aux;
 	int		i;
-	char	*cpstr;
 
+	i = -1;
 	if (!s)
 		return (0);
-	if (!len || start > ft_strlen(s))
-		return (ft_calloc(sizeof(char), 1));
-	cpstr = ft_calloc(sizeof(char), len + 1);
-	if (!cpstr)
+	aux = ft_calloc(ft_strlen(s) + 1, sizeof(char));
+	if (!aux)
 		return (0);
-	i = 0;
-	while ((char)s[start] && len--)
-		cpstr[i++] = (char)s[start++];
-	return (cpstr);
+	while (s[++i])
+		aux[i] = s[i];
+	return (aux);
 }

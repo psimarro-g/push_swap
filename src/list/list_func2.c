@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   list_func2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:14:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/15 12:50:08 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/01 13:49:29 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-#include "../../Libft/inc/libft.h"
+#include "../../libft/inc/libft.h"
 
 int	ps_lst_is_sorted(t_item *first)
 {

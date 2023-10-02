@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/09/26 20:41:16 by psimarro         ###   ########.fr        #
+#    Updated: 2023/10/01 17:12:07 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ NAME		=	push_swap
 
 CC 			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
-LDFLAGS		=	Libft/libft.a -fsanitize=address
+CFLAGS		=	-g3 -fsanitize=address #-Wall -Wextra -Werror
+LDFLAGS		=	libft/libft.a -fsanitize=address
 
 RM			=	rm -f
 
@@ -63,11 +63,11 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(LDFLAGS) $(OBJ)
+	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS) 
 	@echo "\n\033[32mCompiled! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ\n"
 
 libft:
-	@$(MAKE) -C Libft
+	@$(MAKE) -C libft
 
 stack: libft
 	$(CC) -o create_stack create_stack.c $(LDFLAGS)
@@ -80,11 +80,11 @@ pswap:
 
 clean:
 	@$(RM) -rf $(OBJ_DIR)
-	@$(MAKE) -C Libft clean
+	@$(MAKE) -C libft clean
 
 fclean:				clean
 	@$(RM) $(NAME)
-	@$(MAKE) -C Libft fclean
+	@$(MAKE) -C libft fclean
 	@echo "\n\033[31mDeleting EVERYTHING! ⌐(ಠ۾ಠ)¬\033[37m\n"
 
 re:			fclean all

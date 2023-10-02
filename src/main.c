@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:53:30 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/15 12:47:53 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/01 13:49:14 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Libft/inc/libft.h"
+#include "../libft/inc/libft.h"
 #include "../inc/push_swap.h"
 
 void	show_leaks(void)

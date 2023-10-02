@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 16:57:15 by psimarro          #+#    #+#             */
-/*   Updated: 2022/06/08 16:57:20 by psimarro         ###   ########.fr       */
+/*   Created: 2022/06/08 16:55:06 by psimarro          #+#    #+#             */
+/*   Updated: 2023/09/07 19:33:37 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	while (n--)
-	{
-		if (*s1 != *s2 || *s2 == 0 || *s1 == 0)
-			return (*(unsigned char *)s1 - *(unsigned char *)s2);
-		s1++;
-		s2++;
-	}
-	return (0);
+	char	*joinstr;
+	int		len;
+
+	len = ft_strlen(s1) + ft_strlen(s2);
+	joinstr = ft_calloc(sizeof(char), len + 1);
+	if (!joinstr)
+		return (0);
+	ft_strlcpy(joinstr, s1, ft_strlen(s1) + 1);
+	if (s2)
+		ft_strlcat(joinstr, s2, len + 1);
+	return (joinstr);
 }
