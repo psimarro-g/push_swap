@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmontoro <dmontoro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/09/12 20:39:35 by dmontoro         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:46:11 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,12 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-# ifndef OPEN_MAX
-#  define OPEN_MAX 1024
-# endif
-
-# define BUFFER_SIZE	100
-# define FSPECS			"%cdisxXpu"
-# define STD_OUT		1
-# define EX_BASE 		"0123456789abcdefghijklmnopqrstuvwxyz"
-# define EX_BASE_UP 	"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# define BUFFER_SIZE 100
+# define FSPECS		"%cdisxXpu"
+# define STD_OUT	1
+# define OPEN_MAX	256
+# define EX_BASE "0123456789abcdefghijklmnopqrstuvwxyz"
+# define EX_BASE_UP "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 typedef struct s_list
 {
@@ -65,14 +62,12 @@ size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strnstr(const char *haystack,
 					const char *needle, size_t len);
-int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *nptr);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
-int				ft_isspace(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 void			*ft_calloc(size_t count, size_t size);

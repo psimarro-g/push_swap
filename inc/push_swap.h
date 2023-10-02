@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/15 13:52:25 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/01 22:38:04 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_pswap
 	int			stack_size;
 	int			print_ops;
 	int			hold_rb;
-	int			hold_sb;
+	int			hold_rra;
 }	t_pswap;
 
 /* LIST/LIST_FUNC.C */

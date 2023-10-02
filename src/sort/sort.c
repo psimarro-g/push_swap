@@ -6,29 +6,45 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:24:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/09/26 20:39:15 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/01 22:46:53 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-// static void	search_chunk(t_pswap *data, int chunk)
-// {
-// 	int		mid;
-// 	int		top;
-// 	int		bot;
-// 	t_item	*stack;
+static void	search_chunk(t_pswap *data, int chunk)
+{
+	int		mid;
+	int		top;
+	int		bot;
+	t_item	*stack;
 
-// 	stack = data->stack_a;
-// 	mid = (data->stack_size / 2) + (data->stack_size & 1);
-// 	top = 0;
-// 	bot = 0;
-// 	while (top++ < mid && stack->ind > chunk)
-// 		stack = stack->next;
-// 	stack = ps_lstlast(stack);
-// 	while (bot++ < mid && stack->ind > chunk)
-// 		stack = stack->pre;
-// }
+	stack = data->stack_a;
+	mid = (data->stack_size / 2) + (data->stack_size & 1);
+	top = 0;
+	bot = 0;
+	while (top++ < mid && stack->ind > chunk)
+		stack = stack->next;
+	stack = ps_lstlast(stack);
+	while (bot++ < mid && stack->ind > chunk)
+		stack = stack->pre;
+	if (top <= bot)
+	{
+		if (data->hold_rb && top)
+		{
+			data->hold_rb = 0;
+			rr(data);
+			top--;
+		}
+		while (top--)
+			ra(data);
+	}
+	else
+	{
+		while (bot--)
+			rra(data);
+	}
+}
 
 /*
 si hay elementos del chunk ver si sb_hold = 1 y si los dos primeros elementos de a estan desordenados hacer ss, si no hacer sb
@@ -42,15 +58,44 @@ si se queda en top mirar si hay que hacer sb y modificar sb_hold
 static void	ft_sort_chunck(t_pswap *data, int chunk_size, int chunk)
 {
 	int	i;
+	int	half_chunk;
 
-	i = are_values(data->stack_a, chunk_size * chunk);
+	half_chunk = chunk_size * chunk - (chunk_size / 2);
 	while (i)
 	{
-		if (data->stack_a->ind < (chunk_size * chunk))
+		if (!are_values(data->stack_a, chunk_size * chunk))
+			break ;
+		search_chunk(data, chunk_size * chunk);
+		if (data->hold_rb)
+			rb(data);
+		pb(data);
+		if (data->stack_b->val < half_chunk)
+			data->hold_rb = 1;
+	}
+}
+
+/*
+mientras el index no llegue a 0, comprobar si el elemento i esta arriba o abajo del stack b para hacer rb o rrb.
+comprobar si en algun momento el elemento i - 1 esta arriba del stack b y hacer pa para cachearlo.
+actualizar hold_ra mientras se encuentra el elemento i para hacer rr, si no hacer ra antes de pa.
+una vez encontrado el elemento i, hacer pa y si el elemento i - 1 esta abajo del stack actualizar hold_rra por si es necesario hacer rrr.
+*/
+
+static void	sort_a(t_pswap *data, int chunk_size)
+{
+	int	i;
+
+	i = data->stack_size;
+	while (i < chunk_size)
+	{
+		if (data->stack_a->ind <= chunk_size)
 			pb(data);
 		else
-			return ;//ra_or_rr(data);
+			ra(data);
+		i++;
 	}
+	while (data->stack_b)
+		pa(data);
 }
 
 void	ft_quick_sort(t_pswap *data)
@@ -68,5 +113,5 @@ void	ft_quick_sort(t_pswap *data)
 		chunks++;
 	while (chunks--)
 		ft_sort_chunck(data, chunk_size, i++);
-	//sort_a(data);
+	sort_a(data, chunk_size);
 }
