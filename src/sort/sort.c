@@ -6,11 +6,12 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:24:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/02 19:03:46 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:53:02 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
+#include <stdio.h> //esto hay que quitarlo
 
 static void	search_chunk(t_pswap *data, int chunk)
 {
@@ -20,7 +21,7 @@ static void	search_chunk(t_pswap *data, int chunk)
 	t_item	*stack;
 
 	stack = data->stack_a;
-	mid = (data->stack_size / 2) + (data->stack_size & 1);
+	mid = (ps_lstsize(stack) / 2) + (ps_lstsize(stack) & 1);
 	top = 0;
 	bot = 0;
 	while (top++ < mid && stack->ind > chunk)
@@ -36,7 +37,7 @@ static void	search_chunk(t_pswap *data, int chunk)
 			rr(data);
 			top--;
 		}
-		while (top--)
+		while (--top)
 			ra(data);
 	}
 	else
@@ -60,17 +61,32 @@ static void	ft_sort_chunck(t_pswap *data, int chunk_size, int chunk)
 	int	i;
 	int	half_chunk;
 
-	half_chunk = chunk_size * chunk - (chunk_size / 2);
-	while (i)
+	i = chunk_size * (chunk - 1);
+	if (chunk_size * chunk >= data->stack_size)
 	{
-		if (!are_values(data->stack_a, chunk_size * chunk))
-			break ;
-		search_chunk(data, chunk_size * chunk);
-		if (data->hold_rb)
-			rb(data);
-		pb(data);
-		if (data->stack_b->val < half_chunk)
-			data->hold_rb = 1;
+		half_chunk = data->stack_size - 5;
+		while (i++ < half_chunk)
+		{
+			search_chunk(data, half_chunk - 1); 
+			pb(data);
+		}
+		printf("\ndone\n\n"); //esto hay que quitarlo
+		sort_five(data);
+	}
+	else
+	{
+		half_chunk = chunk_size * chunk - (chunk_size / 2);
+		while (1)
+		{
+			if (!are_values(data->stack_a, chunk_size * chunk))
+				break ;
+			search_chunk(data, chunk_size * chunk);
+			if (data->hold_rb)
+				rb(data);
+			pb(data);
+			if (data->stack_b->val < half_chunk)
+				data->hold_rb = 1;
+		}
 	}
 }
 
@@ -81,37 +97,32 @@ actualizar hold_sa mientras se encuentra el elemento i.
 una vez encontrado el elemento i, hacer pa y si hold_sa = 1 hacer sa.
 */
 
-static void	find_push(t_pswap *data, int i)
+static int	ft_check_ssa(t_pswap *data, int *i)
+{
+
+}
+
+static void	find_push(t_pswap *data, int *i, int next)
 {
 	
+	
+	if (ft_check_ssa(data, &i))
+			data->hold_sa = 0;
 }
 
 static void	sort_a(t_pswap *data, int chunk_size)
 {
 	int	i;
 
-	i = data->stack_size;
+	i = data->stack_size - 6;
 	while (data->stack_b->next)
 	{
-		if (data->stack_a->ind == i)
+		find_push(data, &i, 1);
+		if (data->hold_sa)
 		{
-			if (data->hold_rra)
-				rra(data);
-			pa(data);
-			i--;
-			continue ;
+			sa(data);
+			data->hold_sa = 0;
 		}
-		else if (data->stack_a->ind == i - 1)
-		{
-			if (data->hold_rra)
-				rra(data);
-			pa(data);
-			data->hold_ra = 1;
-			continue ;
-		}
-		find_push(data, i);
-		if (data->hold_ra)
-			rra(data);
 	}
 	pa(data);
 }
@@ -131,5 +142,5 @@ void	ft_quick_sort(t_pswap *data)
 		chunks++;
 	while (chunks--)
 		ft_sort_chunck(data, chunk_size, i++);
-	sort_a(data, chunk_size);
+	//sort_a(data, chunk_size);
 }

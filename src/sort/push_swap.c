@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 19:21:52 by psimarro          #+#    #+#             */
-/*   Updated: 2023/09/26 20:30:42 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:58:09 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,20 @@ static void	check_ss(t_pswap *data, int ind)
 		ss(data);
 	else if (stack->ind == ind + 1 && stack->next->ind == ind)
 		ss(data);
+	else
+		sb(data);
 }
 
-static void	sort_five(t_pswap *data)
+void	sort_five(t_pswap *data)
 {
 	int		ind;
 	t_item	*stack;
 
 	stack = data->stack_a;
-	ind = data->stack_size - 3;
+	ind = ps_lstsize(stack) - 3;
 	while (ind--)
-		r_or_rr(data, 1);
-	if (data->stack_b->ind == 0 && data->stack_b->next)
+		r_or_rr(data, data->stack_size - 4);
+	if (data->stack_b->ind < data->stack_b->next->ind && data->stack_b->next)
 		check_ss(data, data->stack_size - 3);
 	sort_three(data, data->stack_size - 3);
 	pa(data);

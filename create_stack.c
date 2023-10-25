@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:25:19 by psimarro          #+#    #+#             */
-/*   Updated: 2023/08/15 12:34:27 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:28:27 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libft/inc/libft.h"
+#include "libft/inc/libft.h"
 #include <fcntl.h>
 #include <stdlib.h>
 #include <time.h>

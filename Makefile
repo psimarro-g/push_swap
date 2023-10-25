@@ -6,7 +6,7 @@
 #    By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/10/01 17:12:07 by psimarro         ###   ########.fr        #
+#    Updated: 2023/10/24 18:29:08 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ NAME		=	push_swap
 
 CC 			=	gcc
 
-CFLAGS		=	-g3 -fsanitize=address #-Wall -Wextra -Werror
-LDFLAGS		=	libft/libft.a -fsanitize=address
+CFLAGS		=	-g3 #-Wall -Wextra -Werror
+LDFLAGS		=	libft/libft.a
 
 RM			=	rm -f
 

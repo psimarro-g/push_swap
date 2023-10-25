@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:53:30 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/02 18:41:19 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:02:55 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	init_data(t_pswap *data)
 	data->print_ops = 0;
 	data->hold_rb = 0;
 	data->hold_ra = 0;
-	data->hold_rra = 0;
+	data->hold_sa = 0;
 }
 
 int	main(int argc, char **argv)
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	t_pswap	data;
 	t_item	*elem;
 
-	atexit(show_leaks);
+	//atexit(show_leaks);
 	init_data(&data);
 	if (argc > 1 && argv)
 	{
@@ -43,19 +43,33 @@ int	main(int argc, char **argv)
 			ps_lstclear(&data.stack_a);
 			ft_mem_error();
 		}
-		elem = data.stack_a;
-		while (elem)
-		{
-			ft_printf("%i\n", elem->val);
-			elem = elem->next;
-		}
 		if (!ps_lst_is_sorted(data.stack_a))
 		{
 			ps_lstindex(data.stack_a);
+			elem = data.stack_a;
+			while (elem)
+			{
+				ft_printf("%i\n", elem->ind);
+				elem = elem->next;
+			}
 			data.stack_size = ps_lstsize(data.stack_a);
 			data.print_ops = 1;
 			sort(&data);
+			elem = data.stack_b;
+			ft_printf("\nstack_b\n");
+			while (elem)
+			{
+				ft_printf("%i\n", elem->ind);
+				elem = elem->next;
+			}
 			ps_lstclear(&data.stack_b);
+		}
+		elem = data.stack_a;
+		ft_printf("\nstack_a\n");
+		while (elem)
+		{
+			ft_printf("%i\n", elem->ind);
+			elem = elem->next;
 		}
 		ps_lstclear(&data.stack_a);
 	}

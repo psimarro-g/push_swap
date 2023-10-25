@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/02 18:39:14 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:59:29 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_pswap
 	int			print_ops;
 	int			hold_rb;
 	int			hold_ra;
-	int			hold_rra;
+	int			hold_sa;
 }	t_pswap;
 
 /* LIST/LIST_FUNC.C */
@@ -64,11 +64,14 @@ int		fill_stack(t_pswap *data, char **input);
 
 /* OPS/SAB.C */
 void	sa(t_pswap *data);
+void	sb(t_pswap *data);
 void	ss(t_pswap *data);
 void	sa_ra(t_pswap *data, int reverse);
 
 /* OPS/RAB.C */
 void	ra(t_pswap *data);
+void	rb(t_pswap *data);
+void	rr(t_pswap *data);
 void	r_or_rr(t_pswap *data, int chunk);
 
 /* OPS/RRAB.C */
@@ -80,6 +83,7 @@ void	pb(t_pswap *data);
 
 /* PUSH_SWAP.C */
 void	sort(t_pswap *data);
+void	sort_five(t_pswap *data);
 
 /* SORT.C */
 void	ft_quick_sort(t_pswap *data);

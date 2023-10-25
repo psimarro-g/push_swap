@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:48:26 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/01 13:49:42 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:36:14 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ static void	r(t_item *stack)
 	}
 }
 
+void	rb(t_pswap *data)
+{
+	r(data->stack_b);
+	if (data->print_ops)
+		ft_putstr_fd("rb\n", 1);
+}
+
 void	ra(t_pswap *data)
 {
 	r(data->stack_a);
@@ -45,15 +52,25 @@ void	ra(t_pswap *data)
 		ft_putstr_fd("ra\n", 1);
 }
 
+void	rr(t_pswap *data)
+{
+	r(data->stack_a);
+	r(data->stack_b);
+	if (data->print_ops)
+		ft_putstr_fd("rr\n", 1);
+}
+
 void	r_or_rr(t_pswap *data, int chunk)
 {
 	int		mid;
 	int		top;
 	int		bot;
+	int		size;
 	t_item	*stack;
 
 	stack = data->stack_a;
-	mid = (data->stack_size / 2) + (data->stack_size & 1);
+	size = ps_lstsize(stack);
+	mid = (size / 2) + (size & 1);
 	top = 0;
 	bot = 0;
 	while (top++ < mid && stack->ind > chunk)
