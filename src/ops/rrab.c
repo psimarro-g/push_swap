@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:30:51 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/24 12:27:43 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:03:05 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,11 @@ void	rra(t_pswap *data)
 	rrt(data->stack_a);
 	if (data->print_ops)
 		ft_putstr_fd("rra\n", 1);
+}
+
+void	rrb(t_pswap *data)
+{
+	rrt(data->stack_b);
+	if (data->print_ops)
+		ft_putstr_fd("rrb\n", 1);
 }

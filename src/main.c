@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:53:30 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/25 14:02:55 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:14:11 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 				ft_printf("%i\n", elem->ind);
 				elem = elem->next;
 			}
+			ft_printf("\n");
 			data.stack_size = ps_lstsize(data.stack_a);
 			data.print_ops = 1;
 			sort(&data);

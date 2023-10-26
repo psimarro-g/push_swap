@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 19:21:52 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/25 14:58:09 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:47:54 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,22 @@ void	sort_five(t_pswap *data)
 	sort_three(data, data->stack_size - 3);
 	pa(data);
 	pa(data);
+}
+
+void	sort_last_a(t_pswap *data)
+{
+	int i;
+
+	if (!ps_lst_is_sorted(data->stack_a))
+	{
+		i = ps_lstsize(data->stack_a);
+		if (i < 3)
+			sa(data);
+		else if (i < 4)
+			sort_three(data, data->stack_size - 3);
+		else
+			sort_five(data);
+	}
 }
 
 void	sort(t_pswap *data)

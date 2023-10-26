@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:24:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/25 14:53:02 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:40:18 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	search_chunk(t_pswap *data, int chunk)
 	stack = ps_lstlast(stack);
 	while (bot++ < mid && stack->ind > chunk)
 		stack = stack->pre;
-	if (top <= bot)
+	if (top-- <= bot)
 	{
 		if (data->hold_rb && top)
 		{
@@ -37,7 +37,7 @@ static void	search_chunk(t_pswap *data, int chunk)
 			rr(data);
 			top--;
 		}
-		while (--top)
+		while (top--)
 			ra(data);
 	}
 	else
@@ -71,7 +71,7 @@ static void	ft_sort_chunck(t_pswap *data, int chunk_size, int chunk)
 			pb(data);
 		}
 		printf("\ndone\n\n"); //esto hay que quitarlo
-		sort_five(data);
+		sort_last_a(data);
 	}
 	else
 	{
@@ -99,15 +99,67 @@ una vez encontrado el elemento i, hacer pa y si hold_sa = 1 hacer sa.
 
 static int	ft_check_ssa(t_pswap *data, int *i)
 {
-
+	if (data->hold_sa == 0)
+	{
+		*i -= 1;
+		return (0);
+	}
+	else
+	{
+		*i -= 2;
+		data->hold_sa = 0;
+		if (data->stack_b->ind < data->stack_b->next->ind)
+			ss(data);
+		else
+			sa(data);
+	}
+	return (1);
 }
 
-static void	find_push(t_pswap *data, int *i, int next)
+static void	find_push(t_pswap *data, int *i)
 {
-	
-	
-	if (ft_check_ssa(data, &i))
-			data->hold_sa = 0;
+	int		mid;
+	int		top;
+	int		bot;
+	t_item	*stack;
+
+	stack = data->stack_b;
+	mid = (ps_lstsize(stack) / 2) + (ps_lstsize(stack) & 1);
+	top = 0;
+	bot = 0;
+	while (top++ < mid && stack->ind != *i)
+		stack = stack->next;
+	stack = ps_lstlast(stack);
+	while (bot++ < mid && stack->ind != *i)
+		stack = stack->pre;
+	if (top-- <= bot)
+	{
+		while (top--)
+		{
+			if (data->stack_b->ind == *i - 1)
+			{
+				data->hold_sa = 1;
+				pa(data);
+			}
+			else
+				rb(data);
+		}
+	}
+	else
+	{
+		while (bot--)
+		{
+			if (data->stack_b->ind == *i - 1)
+			{
+				data->hold_sa = 1;
+				pa(data);
+			}
+			else
+				rrb(data);
+		}
+	}
+	pa(data);
+	ft_check_ssa(data, i);
 }
 
 static void	sort_a(t_pswap *data, int chunk_size)
@@ -117,7 +169,7 @@ static void	sort_a(t_pswap *data, int chunk_size)
 	i = data->stack_size - 6;
 	while (data->stack_b->next)
 	{
-		find_push(data, &i, 1);
+		find_push(data, &i);
 		if (data->hold_sa)
 		{
 			sa(data);
@@ -141,6 +193,9 @@ void	ft_quick_sort(t_pswap *data)
 	if (data->stack_size % chunk_size)
 		chunks++;
 	while (chunks--)
-		ft_sort_chunck(data, chunk_size, i++);
+	{
+		ft_sort_chunck(data, chunk_size, i);
+		i++;
+	}
 	//sort_a(data, chunk_size);
 }

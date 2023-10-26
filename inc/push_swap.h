@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/25 14:59:29 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:48:43 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	r_or_rr(t_pswap *data, int chunk);
 
 /* OPS/RRAB.C */
 void	rra(t_pswap *data);
+void	rrb(t_pswap *data);
 
 /* OPS/PAB.C */
 void	pa(t_pswap *data);
@@ -83,6 +84,7 @@ void	pb(t_pswap *data);
 
 /* PUSH_SWAP.C */
 void	sort(t_pswap *data);
+void	sort_last_a(t_pswap *data);
 void	sort_five(t_pswap *data);
 
 /* SORT.C */
