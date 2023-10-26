@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:48:26 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/26 12:24:15 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:55:00 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	r_or_rr(t_pswap *data, int chunk)
 	stack = ps_lstlast(stack);
 	while (bot++ < mid && stack->ind > chunk)
 		stack = stack->pre;
-	if (top-- <= bot)
-		while (top--)
+	if (top <= bot)
+		while (top-- > 1)
 			ra(data);
 	else
 		while (bot--)

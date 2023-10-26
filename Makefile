@@ -6,7 +6,7 @@
 #    By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/10/24 18:29:08 by psimarro         ###   ########.fr        #
+#    Updated: 2023/10/26 20:49:51 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,8 +75,7 @@ stack: libft
 	$(RM) create_stack
 
 pswap:
-	ARG=$$(cat a.txt); ./push_swap $$ARG 
-# | ./checker_Mac $$ARG
+	ARG=$$(cat a.txt); ./push_swap $$ARG | ./checker_Mac $$ARG
 
 clean:
 	@$(RM) -rf $(OBJ_DIR)

@@ -6,12 +6,39 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:24:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/26 12:40:18 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:49:25 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 #include <stdio.h> //esto hay que quitarlo
+
+void	ft_print_state(t_pswap *data)
+{
+	t_item	*stack_a;
+	t_item	*stack_b;
+
+	stack_a = data->stack_a;
+	stack_b = data->stack_b;
+	printf("\nstack_a    stack_b\n");
+	while (stack_a || stack_b)
+	{
+		if (stack_a)
+		{
+			printf("%i      ", stack_a->ind);
+			stack_a = stack_a->next;
+		}
+		else
+			printf("        ");
+		if (stack_b)
+		{
+			printf("%i      ", stack_b->ind);
+			stack_b = stack_b->next;
+		}
+		printf("\n");
+	}
+	getchar();
+}
 
 static void	search_chunk(t_pswap *data, int chunk)
 {
@@ -24,20 +51,20 @@ static void	search_chunk(t_pswap *data, int chunk)
 	mid = (ps_lstsize(stack) / 2) + (ps_lstsize(stack) & 1);
 	top = 0;
 	bot = 0;
-	while (top++ < mid && stack->ind > chunk)
+	while (top++ < mid && is_value(data, stack->ind, chunk))
 		stack = stack->next;
 	stack = ps_lstlast(stack);
-	while (bot++ < mid && stack->ind > chunk)
+	while (bot++ < mid && is_value(data, stack->ind, chunk))
 		stack = stack->pre;
-	if (top-- <= bot)
+	if (top <= bot)
 	{
-		if (data->hold_rb && top)
+		if (data->hold_rb && top > 1)
 		{
 			data->hold_rb = 0;
 			rr(data);
 			top--;
 		}
-		while (top--)
+		while (top-- > 1)
 			ra(data);
 	}
 	else
@@ -58,35 +85,26 @@ si se queda en top mirar si hay que hacer sb y modificar sb_hold
 
 static void	ft_sort_chunck(t_pswap *data, int chunk_size, int chunk)
 {
-	int	i;
 	int	half_chunk;
+	int	i;
+	int	block;
 
-	i = chunk_size * (chunk - 1);
-	if (chunk_size * chunk >= data->stack_size)
+	block = chunk_size * chunk;
+	i = block - chunk_size;
+	half_chunk = block - (chunk_size / 2);
+	while (i < block && i++ < data->stack_size - 5)
 	{
-		half_chunk = data->stack_size - 5;
-		while (i++ < half_chunk)
+		search_chunk(data, block);
+		if (data->hold_rb)
 		{
-			search_chunk(data, half_chunk - 1); 
-			pb(data);
+			data->hold_rb = 0;
+			rb(data);
 		}
-		printf("\ndone\n\n"); //esto hay que quitarlo
-		sort_last_a(data);
-	}
-	else
-	{
-		half_chunk = chunk_size * chunk - (chunk_size / 2);
-		while (1)
-		{
-			if (!are_values(data->stack_a, chunk_size * chunk))
-				break ;
-			search_chunk(data, chunk_size * chunk);
-			if (data->hold_rb)
-				rb(data);
-			pb(data);
-			if (data->stack_b->val < half_chunk)
-				data->hold_rb = 1;
-		}
+		pb(data);
+		if (data->stack_b->ind < half_chunk && data->stack_size - block > 0)
+			data->hold_rb = 1;
+		else
+			data->hold_rb = 0;
 	}
 }
 
@@ -108,7 +126,8 @@ static int	ft_check_ssa(t_pswap *data, int *i)
 	{
 		*i -= 2;
 		data->hold_sa = 0;
-		if (data->stack_b->ind < data->stack_b->next->ind)
+		if (data->stack_b && data->stack_b->next\
+			&& data->stack_b->ind < data->stack_b->next->ind)
 			ss(data);
 		else
 			sa(data);
@@ -132,9 +151,9 @@ static void	find_push(t_pswap *data, int *i)
 	stack = ps_lstlast(stack);
 	while (bot++ < mid && stack->ind != *i)
 		stack = stack->pre;
-	if (top-- <= bot)
+	if (top <= bot)
 	{
-		while (top--)
+		while (top-- > 1)
 		{
 			if (data->stack_b->ind == *i - 1)
 			{
@@ -153,6 +172,7 @@ static void	find_push(t_pswap *data, int *i)
 			{
 				data->hold_sa = 1;
 				pa(data);
+				rrb(data);
 			}
 			else
 				rrb(data);
@@ -177,6 +197,11 @@ static void	sort_a(t_pswap *data, int chunk_size)
 		}
 	}
 	pa(data);
+	if (data->hold_sa)
+	{
+		sa(data);
+		data->hold_sa = 0;
+	}
 }
 
 void	ft_quick_sort(t_pswap *data)
@@ -197,5 +222,9 @@ void	ft_quick_sort(t_pswap *data)
 		ft_sort_chunck(data, chunk_size, i);
 		i++;
 	}
-	//sort_a(data, chunk_size);
+	printf("done\n");
+	if (data->hold_rb)
+		rb(data);
+	sort_five(data);
+	sort_a(data, chunk_size);
 }

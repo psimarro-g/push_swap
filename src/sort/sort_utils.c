@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 13:57:10 by psimarro          #+#    #+#             */
-/*   Updated: 2023/09/26 20:30:47 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:04:59 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,9 @@ int	find_values(t_pswap *data, int chunk)
 	return (0);
 }
 
-int		are_values(t_item *stack, int chunk)
+int	is_value(t_pswap *data, int value, int chunk)
 {
-	t_item	*a_stack;
-
-	a_stack = stack;
-	while (a_stack)
-	{
-		if (a_stack->ind < chunk)
-			return (1);
-		a_stack = a_stack->next;
-	}
+	if (value >= chunk || value > data->stack_size - 6)
+		return (1);
 	return (0);
 }
