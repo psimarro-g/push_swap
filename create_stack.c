@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:25:19 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/26 20:54:10 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:35:28 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <time.h>
 
 #define START_POINT 1
-#define ARRAY_SIZE 100
+#define ARRAY_SIZE 500
 
 int	*fill_array(void)
 {

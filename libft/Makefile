@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+         #
+#    By: dmontoro <dmontoro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 17:45:18 by psimarro          #+#    #+#              #
-#    Updated: 2023/10/24 18:29:17 by psimarro         ###   ########.fr        #
+#    Updated: 2023/09/12 20:39:51 by dmontoro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = gcc 
-CFLAGS	= -g3 #-Wall -Wextra -Werror
+CFLAGS	= -g3 -fsanitize=address #-Wall -Wextra -Werror -O3
 
 RM = rm -f
 
@@ -49,6 +49,8 @@ $(OBJ_DIR):
 $(NAME): $(OBJ)
 	@ar rcs $@ $^
 
+.PHONY: all clean fclean re
+
 clean:
 	@$(RM) -rf $(OBJ_DIR)
 
@@ -56,5 +58,3 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re

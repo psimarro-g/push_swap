@@ -6,7 +6,7 @@
 /*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:24:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/26 20:49:25 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:33:39 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ static void	sort_a(t_pswap *data, int chunk_size)
 	int	i;
 
 	i = data->stack_size - 6;
-	while (data->stack_b->next)
+	while (data->stack_b && data->stack_b->next)
 	{
 		find_push(data, &i);
 		if (data->hold_sa)
