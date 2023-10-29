@@ -130,6 +130,40 @@ prompt back.
 Errors include for example: some arguments aren’t integers, some arguments are
 bigger than an integer and/or there are duplicates.
 
-### Checker program
+## Usage
 
-Coming soon ...
+Use make to compile.
+```console
+$> make
+```
+compiles program.
+```console
+$> ./create_stack <size> stack
+```
+creates a list of <size> randomly shuffled non repeated integers and outputs them to file "stack".
+```console
+$> make pswap
+```
+executes push_swap with file stack as input.
+```console
+$> make bonus
+```
+compiles checker program.
+```console
+$> ARG=$(cat stack); ./push_swap $ARG | ./checker $ARG
+```
+executes checker on push_swap output.
+
+## Checker program
+
+The program checker takes as an argument the stack a formatted
+as a list of integers. The first argument is at the top of the stack. If no argument is given, it stops and displays nothing.
+- It will then wait and read instructions on the standard input. Once all the instructions have been read, the program has to
+execute them on the stack received as an argument.
+- If after executing those instructions, the stack a is actually sorted and the stack b
+is empty, then the program must display "OK" followed by a ’\n’ on the standard
+output.
+- In every other case, it must display "KO" followed by a ’\n’ on the standard output.
+- In case of error, it displays "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments are not integers, some arguments
+are bigger than an integer, there are duplicates, an instruction doesn’t exist and/or
+is incorrectly formatted.
