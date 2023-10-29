@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rrab.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:30:51 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/27 19:51:05 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/29 19:05:49 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	rrt(t_item *stack)
 	int	num;
 	int	index;
 
-	if (!stack)
+	if (!stack || !stack->next)
 		return ;
 	stack = ps_lstlast(stack);
 	num = stack->val;

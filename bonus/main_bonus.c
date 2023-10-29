@@ -6,17 +6,12 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 19:59:13 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/29 17:59:49 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/29 18:09:56 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/inc/libft.h"
 #include "./checker.h"
-
-void	show_leaks(void)
-{
-	system("leaks -q checker");
-}
 
 static void	init_data(t_pswap *data)
 {
@@ -25,9 +20,27 @@ static void	init_data(t_pswap *data)
 	data->print_ops = 0;
 }
 
-void check_sort(t_pswap *data)
+static void	ft_other_ops(char *line, t_pswap *data)
 {
-	char *line;
+	if (ft_strcmp(line, "rrb\n") == 0)
+		rrb(data);
+	else if (ft_strcmp(line, "sa\n") == 0)
+		sa(data);
+	else if (ft_strcmp(line, "sb\n") == 0)
+		sb(data);
+	else if (ft_strcmp(line, "rr\n") == 0)
+		rr(data);
+	else if (ft_strcmp(line, "ss\n") == 0)
+		ss(data);
+	else if (ft_strcmp(line, "rrr\n") == 0)
+		rrr(data);
+	else
+		ft_mem_error();
+}
+
+void	check_sort(t_pswap *data)
+{
+	char	*line;
 
 	line = get_next_line(0);
 	while (line)
@@ -42,20 +55,8 @@ void check_sort(t_pswap *data)
 			rra(data);
 		else if (ft_strcmp(line, "rb\n") == 0)
 			rb(data);
-		else if (ft_strcmp(line, "rrb\n") == 0)
-			rrb(data);
-		else if (ft_strcmp(line, "sa\n") == 0)
-			sa(data);
-		else if (ft_strcmp(line, "sb\n") == 0)
-			sb(data);
-		else if (ft_strcmp(line, "rr\n") == 0)
-			rr(data);
-		else if (ft_strcmp(line, "ss\n") == 0)
-			ss(data);
-		else if (ft_strcmp(line, "rrr\n") == 0)
-			rrr(data);
 		else
-			ft_mem_error();
+			ft_other_ops(line, data);
 		free(line);
 		line = get_next_line(0);
 	}
@@ -65,7 +66,6 @@ int	main(int argc, char **argv)
 {
 	t_pswap	data;
 
-	//atexit(show_leaks);
 	init_data(&data);
 	if (argc == 2 && argv)
 	{

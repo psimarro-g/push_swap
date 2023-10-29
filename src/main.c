@@ -6,17 +6,12 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 19:53:30 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/29 17:03:23 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/29 18:12:56 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/inc/libft.h"
 #include "../inc/push_swap.h"
-
-void	show_leaks(void)
-{
-	system("leaks -q push_swap");
-}
 
 static void	init_data(t_pswap *data)
 {
@@ -33,7 +28,6 @@ int	main(int argc, char **argv)
 {
 	t_pswap	data;
 
-	//atexit(show_leaks);
 	init_data(&data);
 	if (argc > 1 && argv)
 	{

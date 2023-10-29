@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:48:26 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/29 16:02:32 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/29 19:05:27 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	r(t_item *stack)
 	int	num;
 	int	index;
 
-	if (!stack)
+	if (!stack || !stack->next)
 		return ;
 	num = stack->val;
 	index = stack->ind;

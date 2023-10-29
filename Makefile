@@ -6,7 +6,7 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/10/29 16:49:37 by psimarro         ###   ########.fr        #
+#    Updated: 2023/10/29 18:20:03 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CHECKER		=	checker
 
 CC 			=	gcc
 
-CFLAGS		=	-g3 -O0 #-Wall -Wextra -Werror
+CFLAGS		=	-O0 -Wall -Wextra -Werror
 LDFLAGS		=	libft/libft.a
 
 RM			=	rm -f
@@ -39,7 +39,7 @@ RM			=	rm -f
 
 SRC_DIR		=	src/
 SRC			=	main.c \
-				push_swap.c sort.c sort_utils.c \
+				push_swap.c quick_sort.c sort_a.c \
 				parse.c	ptr_atoi.c \
 				list_func.c	list_func2.c \
 				pab.c rab.c rrab.c sab.c

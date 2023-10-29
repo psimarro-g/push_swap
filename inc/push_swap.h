@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:37:55 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/26 20:05:03 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/29 18:37:49 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,11 @@ void	pb(t_pswap *data);
 void	sort(t_pswap *data);
 void	sort_five(t_pswap *data);
 
-/* SORT.C */
+/* QUICK_SORT.C */
 void	ft_quick_sort(t_pswap *data);
-
-/* SORT_UTILS.C */
-int		ft_get_min(t_item *stack);
-int		ft_get_max(t_item *stack);
-int		find_values(t_pswap *data, int chunk);
 int		is_value(t_pswap *data, int value, int chunk);
 
-
-void	ft_print_state(t_pswap *data);
+/* SORT_A.C */
+void	sort_a(t_pswap *data);
 
 #endif
