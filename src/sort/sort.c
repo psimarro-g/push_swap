@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:24:18 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/27 17:33:39 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:13:59 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,6 @@ void	ft_quick_sort(t_pswap *data)
 		ft_sort_chunck(data, chunk_size, i);
 		i++;
 	}
-	printf("done\n");
 	if (data->hold_rb)
 		rb(data);
 	sort_five(data);

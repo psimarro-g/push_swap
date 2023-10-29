@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 19:59:13 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/27 20:13:27 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:59:49 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	show_leaks(void)
 {
-	system("leaks -q push_swap");
+	system("leaks -q checker");
 }
 
 static void	init_data(t_pswap *data)
@@ -54,6 +54,9 @@ void check_sort(t_pswap *data)
 			ss(data);
 		else if (ft_strcmp(line, "rrr\n") == 0)
 			rrr(data);
+		else
+			ft_mem_error();
+		free(line);
 		line = get_next_line(0);
 	}
 }
@@ -62,7 +65,7 @@ int	main(int argc, char **argv)
 {
 	t_pswap	data;
 
-	atexit(show_leaks);
+	//atexit(show_leaks);
 	init_data(&data);
 	if (argc == 2 && argv)
 	{

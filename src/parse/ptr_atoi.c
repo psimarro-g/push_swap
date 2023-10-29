@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ptr_atoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 20:51:50 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/01 13:50:00 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:56:21 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static int	trim_end(const char *str, int i)
 	return (i);
 }
 
-static int	ft_checknb(long int nb, int neg)
+static int	ft_checknb(long long int nb, int neg)
 {
-	long int	nl;
+	long long int	nl;
 
 	nl = INT_MAX;
 	if (nb > nl && neg > 0)
@@ -59,8 +59,8 @@ static int	ft_checknb(long int nb, int neg)
 
 int	ft_ptr_atoi(const char *str, int *value, int i)
 {
-	int		neg;
-	long	val;
+	int				neg;
+	long long int	val;
 
 	val = 0;
 	while (is_space(str[i]))
@@ -71,9 +71,11 @@ int	ft_ptr_atoi(const char *str, int *value, int i)
 	if (!(str[i] >= '0' && str[i] <= '9'))
 		return (0);
 	while (str[i] >= '0' && str[i] <= '9')
+	{
 		val = (val * 10) + (str[i++] - '0');
-	if (!ft_checknb(val, neg))
-		return (0);
+		if (!ft_checknb(val, neg))
+			return (0);
+	}
 	*value = neg * (int)val;
 	i = trim_end(str, i);
 	return (i);

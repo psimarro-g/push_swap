@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 20:45:42 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/02 18:41:36 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:38:50 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	fill_stack(t_pswap *data, char **input)
 	t_item	*new;
 
 	j = 0;
+	if (input[1][0] == '\0')
+		return (0);
 	while (input[++j])
 	{
 		i = 0;

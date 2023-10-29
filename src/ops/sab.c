@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sab.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 19:23:19 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/27 19:50:31 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/29 16:03:27 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,13 @@ void	ss(t_pswap *data)
 	s(data->stack_b);
 	if (data->print_ops)
 		ft_putstr_fd("ss\n", 1);
+}
+
+void	sa_ra(t_pswap *data, int reverse)
+{
+	sa(data);
+	if (reverse)
+		rra(data);
+	else
+		ra(data);
 }

@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dmontoro <dmontoro@student.42.fr>          +#+  +:+       +#+         #
+#    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 17:45:18 by psimarro          #+#    #+#              #
-#    Updated: 2023/09/12 20:39:51 by dmontoro         ###   ########.fr        #
+#    Updated: 2023/10/29 16:49:51 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = gcc 
-CFLAGS	= -g3 -fsanitize=address #-Wall -Wextra -Werror -O3
+CFLAGS	= -g3 -O0 #-Wall -Wextra -Werror -O3
 
 RM = rm -f
 
@@ -48,6 +48,7 @@ $(OBJ_DIR):
 
 $(NAME): $(OBJ)
 	@ar rcs $@ $^
+	@echo "\n\033[32mLibft compiled!\033[37m\n"
 
 .PHONY: all clean fclean re
 

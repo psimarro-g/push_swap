@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: psimarro <psimarro@student.42.fr>          +#+  +:+       +#+         #
+#    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/10/27 20:01:56 by psimarro         ###   ########.fr        #
+#    Updated: 2023/10/29 16:49:37 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CHECKER		=	checker
 
 CC 			=	gcc
 
-CFLAGS		=	-g3 #-Wall -Wextra -Werror
+CFLAGS		=	-g3 -O0 #-Wall -Wextra -Werror
 LDFLAGS		=	libft/libft.a
 
 RM			=	rm -f
@@ -84,8 +84,7 @@ stack: libft
 	$(RM) create_stack
 
 pswap:
-	ARG=$$(cat a.txt); ./push_swap $$ARG 
-#| ./checker_Mac $$ARG
+	ARG=$$(cat a.txt); ./push_swap $$ARG | ./checker_Mac $$ARG
 
 clean:
 	@$(RM) -rf $(OBJ_DIR)
