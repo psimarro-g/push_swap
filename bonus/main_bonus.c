@@ -6,7 +6,7 @@
 /*   By: psimarro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 19:59:13 by psimarro          #+#    #+#             */
-/*   Updated: 2023/10/29 18:09:56 by psimarro         ###   ########.fr       */
+/*   Updated: 2023/10/29 20:22:31 by psimarro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 			ft_mem_error();
 		}
 		check_sort(&data);
-		if (!ps_lst_is_sorted(data.stack_a))
+		if (!ps_lst_is_sorted(data.stack_a) || data.stack_b)
 			write(1, "KO\n", 3);
 		else
 			write(1, "OK\n", 3);

@@ -6,7 +6,7 @@
 #    By: psimarro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 16:23:46 by psimarro          #+#    #+#              #
-#    Updated: 2023/10/29 18:20:03 by psimarro         ###   ########.fr        #
+#    Updated: 2023/10/29 20:04:26 by psimarro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,13 +78,9 @@ $(NAME): $(OBJ)
 libft:
 	@$(MAKE) -C libft
 
-stack: libft
-	$(CC) -o create_stack create_stack.c $(LDFLAGS)
-	./create_stack a.txt
-	$(RM) create_stack
-
 pswap:
-	ARG=$$(cat a.txt); ./push_swap $$ARG | ./checker_Mac $$ARG
+	ARG=$$(cat stack); ./push_swap $$ARG 
+#| ./checker_Mac $$ARG
 
 clean:
 	@$(RM) -rf $(OBJ_DIR)
@@ -113,4 +109,4 @@ $(CHECKER): $(BONUS_OBJ)
 	$(CC) -o $(CHECKER) $(BONUS_OBJ) $(LDFLAGS) 
 	@echo "\n\033[32mBonus Compiled! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ\n"
 
-.PHONY:		all libft stack pswap clean fclean re bonus
+.PHONY:		all libft pswap clean fclean re bonus
